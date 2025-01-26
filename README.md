@@ -1,7 +1,7 @@
-# MAVOS - Multi-Agent Virtual Operating System
+# MAVOS - Multi-Aspect Virtual Operating System
 
 ## 📌 Introduction
-MAVOS (**Multi-Agent Virtual Operating System**) is an advanced **OS simulation and research environment** designed to provide deep insights into core Computer Science concepts, including **process scheduling, memory management, file systems, networking, concurrency, and security**. It enables users to create, manipulate, and monitor processes while experimenting with different OS functionalities in a **controlled virtual environment**.
+MAVOS (**Multi-Aspect Virtual Operating System**) is an advanced **OS simulation and research environment** designed to provide deep insights into core Computer Science concepts, including **process scheduling, memory management, file systems, networking, concurrency, and security**. It enables users to create, manipulate, and monitor processes while experimenting with different OS functionalities in a **controlled virtual environment**.
 
 Unlike traditional operating system simulators, MAVOS integrates **AI-driven optimizations, real-time monitoring dashboards, fault tolerance mechanisms, and security implementations**, making it a powerful tool for **students, researchers, and developers** to understand how real-world operating systems function.
 
