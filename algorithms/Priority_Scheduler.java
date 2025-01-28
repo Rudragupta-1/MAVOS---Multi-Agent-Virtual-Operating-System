@@ -2,23 +2,24 @@ package algorithms;
 
 import java.util.*;
 import models.Process;
-public class FCFS_Scheduler {
+
+public class Priority_Scheduler {
     private List<Process> processes;
- 
-    public FCFS_Scheduler() {
+
+    public Priority_Scheduler() {
         processes = new ArrayList<>();
     }
 
-    // Method to add a process
-    public void addProcess(int pid, int arrivalTime, int burstTime) {
-        Process process = new Process(pid, arrivalTime, burstTime);
+    // Method to add a process with priority
+    public void addProcess(int pid, int arrivalTime, int burstTime, int priority) {
+        Process process = new Process(pid, arrivalTime, burstTime, priority);
         processes.add(process);
     }
 
-    // FCFS Scheduling Algorithm
-    public void scheduleFCFS() {
-        // Sort processes based on Arrival Time
-        Collections.sort(processes, Comparator.comparingInt(Process::getArrivalTime));
+    // Priority Scheduling Algorithm
+    public void schedulePriority() {
+        // Sort processes by Priority (Lower value = Higher priority)
+        Collections.sort(processes, Comparator.comparingInt(Process::getPriority));
 
         int currentTime = 0;
         int totalWaitTime = 0;
@@ -26,37 +27,29 @@ public class FCFS_Scheduler {
 
         // Calculate Completion Time, Waiting Time, and Turnaround Time
         for (Process process : processes) {
-            // If the process arrives after the current time, move the current time to its arrival time
             if (currentTime < process.getArrivalTime()) {
                 currentTime = process.getArrivalTime();
             }
 
-            // Completion time = current time + burst time
             process.setCompletionTime(currentTime + process.getBurstTime());
-
-            // Turnaround time = Completion time - Arrival time
             process.setTurnaroundTime(process.getCompletionTime() - process.getArrivalTime());
-
-            // Waiting time = Turnaround time - Burst time
             process.setWaitingTime(process.getTurnaroundTime() - process.getBurstTime());
 
-            // Update total waiting time and total turnaround time
             totalWaitTime += process.getWaitingTime();
             totalTurnaroundTime += process.getTurnaroundTime();
 
-            // Move current time forward by the burst time of the process
             currentTime += process.getBurstTime();
         }
 
         // Print Gantt Chart
-        System.out.println("\nGantt Chart (FCFS): ");
+        System.out.println("\nGantt Chart (Priority Scheduling): ");
         printGanttChart();
 
         // Print results
         printResults(totalWaitTime, totalTurnaroundTime);
     }
 
-    // Print Gantt Chart for FCFS
+    // Print Gantt Chart for Priority Scheduling
     private void printGanttChart() {
         System.out.print("Timeline: ");
         for (Process process : processes) {

@@ -1,18 +1,27 @@
 package models;
 
 public class Process {
-    private int pid; // Process ID
-    private int arrivalTime; // Arrival time
-    private int burstTime; // CPU Burst time
-    private int completionTime; // Completion time
-    private int waitingTime; // Waiting time
-    private int turnaroundTime; // Turnaround time
+    private int pid;
+    private int arrivalTime;
+    private int burstTime;
+    private int completionTime;
+    private int waitingTime;
+    private int turnaroundTime;
+    private int priority; // Added priority attribute
 
-    // Constructor
+    // Constructor for Priority Scheduling
+    public Process(int pid, int arrivalTime, int burstTime, int priority) {
+        this.pid = pid;
+        this.arrivalTime = arrivalTime;
+        this.burstTime = burstTime;
+        this.priority = priority;
+    }
+    // For SJF and FCFS
     public Process(int pid, int arrivalTime, int burstTime) {
         this.pid = pid;
         this.arrivalTime = arrivalTime;
         this.burstTime = burstTime;
+        this.priority = Integer.MAX_VALUE; // Default priority for SJF/FCFS
     }
 
     // Getters and Setters
@@ -52,10 +61,18 @@ public class Process {
         this.turnaroundTime = turnaroundTime;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
     // Display process info
     public void displayProcessInfo() {
         System.out.println("Process " + pid + ": Arrival Time = " + arrivalTime + ", Burst Time = " + burstTime +
-                           ", Completion Time = " + completionTime + ", Waiting Time = " + waitingTime + 
-                           ", Turnaround Time = " + turnaroundTime);
+                           ", Priority = " + priority + ", Completion Time = " + completionTime +
+                           ", Waiting Time = " + waitingTime + ", Turnaround Time = " + turnaroundTime);
     }
 }

@@ -6,7 +6,7 @@ import models.Process;
 public class SJF_Scheduler {
     private List<Process> processes;
 
-    public SJF_Scheduler() {
+    public SJF_Scheduler() { 
         processes = new ArrayList<>();
     }
 
